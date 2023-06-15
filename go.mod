@@ -1,4 +1,4 @@
-module github.com/mat/besticon
+module github.com/sertifier/besticon
 
 // +heroku goVersion go1.17
 

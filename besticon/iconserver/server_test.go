@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mat/besticon/besticon"
+	"github.com/sertifier/besticon/besticon"
 )
 
 func TestGetIndex(t *testing.T) {

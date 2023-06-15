@@ -15,9 +15,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mat/besticon/besticon"
-	"github.com/mat/besticon/besticon/iconserver/assets"
-	"github.com/mat/besticon/lettericon"
+	"github.com/sertifier/besticon/besticon"
+	"github.com/sertifier/besticon/besticon/iconserver/assets"
+	"github.com/sertifier/besticon/lettericon"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/rs/cors"
@@ -421,7 +421,7 @@ func registerHandler(path string, f http.HandlerFunc) {
 }
 
 func main() {
-	fmt.Printf("iconserver %s (%s) (%s) - https://github.com/mat/besticon\n", besticon.VersionString, besticon.BuildDate, runtime.Version())
+	fmt.Printf("iconserver %s (%s) (%s) - https://github.com/sertifier/besticon\n", besticon.VersionString, besticon.BuildDate, runtime.Version())
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -448,10 +448,12 @@ func templateFromAsset(assetPath, templateName string) *template.Template {
 	return template.Must(template.New(templateName).Funcs(funcMap).Parse(string(data)))
 }
 
-var indexHTML *template.Template
-var iconsHTML *template.Template
-var popularHTML *template.Template
-var notFoundHTML *template.Template
+var (
+	indexHTML    *template.Template
+	iconsHTML    *template.Template
+	popularHTML  *template.Template
+	notFoundHTML *template.Template
+)
 
 var funcMap = template.FuncMap{
 	"ImgWidth": imgWidth,

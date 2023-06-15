@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/mat/besticon/vcr"
+	"github.com/sertifier/besticon/vcr"
 )
 
 //
@@ -168,7 +168,7 @@ func TestIconInSizeRange(t *testing.T) {
 		{"http://eat24.com", SizeRange{120, 150, 500}, ""},
 		{"http://kicktipp.de", SizeRange{20, 80, 500}, "http://info.kicktipp.de/assets/img/jar_cb333387130/assets/img/logos/apple-touch-icon-57x57-precomposed.png"},
 
-		// https://github.com/mat/besticon/issues/28
+		// https://github.com/sertifier/besticon/issues/28
 		{"https://random.org", SizeRange{16, 32, 64}, "https://www.random.org/favicon.ico"},
 
 		// This test can only work because with HostOnlyDomains accordingly

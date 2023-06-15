@@ -7,23 +7,24 @@ import (
 	"crypto/sha1"
 	"errors"
 	"fmt"
-	"github.com/golang/groupcache"
 	"image"
 	"image/color"
+	_ "image/gif"
+	_ "image/jpeg"
+	_ "image/png"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 
+	"github.com/golang/groupcache"
+
 	// Load supported image formats.
-	_ "image/gif"
-	_ "image/jpeg"
-	_ "image/png"
 
-	_ "github.com/mat/besticon/ico"
+	_ "github.com/sertifier/besticon/ico"
 
-	"github.com/mat/besticon/colorfinder"
+	"github.com/sertifier/besticon/colorfinder"
 
 	"golang.org/x/net/html/charset"
 )
@@ -217,7 +218,7 @@ func (b *Besticon) fetchIcons(siteURL string) ([]Icon, error) {
 		}
 	} else {
 		// Unable to fetch the response or got a bad HTTP status code. Try default
-		// icon paths. https://github.com/mat/besticon/discussions/47
+		// icon paths. https://github.com/sertifier/besticon/discussions/47
 		links, e = defaultIconURLs(siteURL)
 		if e != nil {
 			return nil, e

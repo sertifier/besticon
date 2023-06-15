@@ -24,14 +24,16 @@ import (
 	"golang.org/x/net/publicsuffix"
 
 	"github.com/golang/freetype/truetype"
-	"github.com/mat/besticon/colorfinder"
-	"github.com/mat/besticon/lettericon/fonts"
+	"github.com/sertifier/besticon/colorfinder"
+	"github.com/sertifier/besticon/lettericon/fonts"
 )
 
 const dpi = 72
 
-const fontSizeFactor = 0.6180340     // (by taste)
-const yOffsetFactor = 102.0 / 1024.0 // (by trial and error) :-)
+const (
+	fontSizeFactor = 0.6180340      // (by taste)
+	yOffsetFactor  = 102.0 / 1024.0 // (by trial and error) :-)
+)
 
 func RenderPNG(letter string, bgColor color.Color, width int, out io.Writer) error {
 	fg := pickForegroundColor(bgColor)
@@ -155,9 +157,7 @@ func foo(col uint32) float64 {
 	return math.Pow(((c + 0.055) / 1.055), 2.4)
 }
 
-var (
-	errMalformedColorString = errors.New("Malformed hex color string")
-)
+var errMalformedColorString = errors.New("Malformed hex color string")
 
 func ColorFromHex(hex string) (*color.RGBA, error) {
 	if len(hex) != 6 && len(hex) != 7 {
@@ -313,7 +313,6 @@ func percentDecode(p string) string {
 		p = "/" + p
 	}
 	u, err := url.ParseRequestURI(p)
-
 	if err != nil {
 		return p
 	}
@@ -361,8 +360,10 @@ func ColorToHex(c color.Color) string {
 
 var fnt *truetype.Font
 
-var DefaultBackgroundColor *color.RGBA
-var lightDark *color.RGBA
+var (
+	DefaultBackgroundColor *color.RGBA
+	lightDark              *color.RGBA
+)
 
 func init() {
 	var err error
